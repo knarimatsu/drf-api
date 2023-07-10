@@ -1,10 +1,7 @@
-FROM python:3.10.12-alpine3.17
+FROM python:3
 ENV PYTHONUNBUFFERED 1
-
+RUN mkdir /code
 WORKDIR /code
-
-COPY requirements.txt requirements.txt
-RUN pip install --upgrade pip
+ADD requirements.txt /code/
 RUN pip install -r requirements.txt
-
-COPY ../drf-api /code/
+ADD . /code/
